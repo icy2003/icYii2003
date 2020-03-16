@@ -1,0 +1,21 @@
+{
+  "name": "icyii2003",
+  "homepage": "https://github.com/icy2003/icyii2003",
+  "authors": [
+    "icy2003 <2317216477@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "BSD-3-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower-asset",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "layui": "lay#^2.5.6"
+  }
+}
