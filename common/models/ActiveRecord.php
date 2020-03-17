@@ -11,11 +11,6 @@ class ActiveRecord extends DbActiveRecord
         return new ActiveQuery(get_called_class());
     }
 
-    public function findOne($condition)
-    {
-        return parent::findByCondition($condition)->limit(1)->one();
-    }
-
     protected $_parentId = 'pid';
     protected $_childId = 'id';
 
