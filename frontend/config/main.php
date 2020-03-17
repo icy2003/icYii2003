@@ -36,7 +36,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'db' => require __DIR__ . '/../../common/config/db.php',
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
