@@ -10,8 +10,8 @@
 2. composer 安装依赖 `composer install`
 3. 初始化项目 `init`
 4. 修改数据库配置 "common/config/db.php" 并把 "common/config/main-local.php" 的 db 组件的值改为 `require __DIR__ . '/db.php'`
-5. 初始化数据库 `yii migrate`
-6. 初始化 RBAC 权限 `yii migrate --migrationPath=@yii/rbac/migrations/`
+5. 初始化 RBAC 权限 `yii migrate --migrationPath=@yii/rbac/migrations/`
+6. 初始化数据库 `yii migrate`
 7. bower 更新前端依赖 `bower update`
 
 ## Yii2 原高级模板问题
