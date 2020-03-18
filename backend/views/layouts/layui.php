@@ -3,12 +3,13 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use backend\assets\AppAsset;
 use backend\assets\LayuiAsset;
 use common\utils\Y;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
+AppAsset::register($this);
 LayuiAsset::register($this);
 ?>
 <?php $this->beginPage()?>

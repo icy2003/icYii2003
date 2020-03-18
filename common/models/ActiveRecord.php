@@ -6,14 +6,9 @@ use yii\db\ActiveRecord as DbActiveRecord;
 
 class ActiveRecord extends DbActiveRecord
 {
-    public function find()
+    public static function find()
     {
         return new ActiveQuery(get_called_class());
-    }
-
-    public function findOne($condition)
-    {
-        return $this->find()->where($condition)->limit(1)->one();
     }
 
     protected $_parentId = 'pid';
