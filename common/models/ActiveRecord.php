@@ -6,7 +6,7 @@ use yii\db\ActiveRecord as DbActiveRecord;
 
 class ActiveRecord extends DbActiveRecord
 {
-    public function find()
+    public static function find()
     {
         return new ActiveQuery(get_called_class());
     }

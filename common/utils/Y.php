@@ -12,12 +12,23 @@ class Y extends Yii
         return I::get(parent::$app->params, $name);
     }
 
-    public static function user($attribute , $defaultValue = null)
+    public static function user($attribute, $defaultValue = null)
     {
-        return I::get(parent::$app->user->identity, $attribute , $defaultValue);
+        return I::get(parent::$app->user->identity, $attribute, $defaultValue);
     }
 
-    public static function to($params){
+    public static function to($params)
+    {
         return parent::$app->urlManager->createUrl($params);
+    }
+
+    public static function get($name = null, $defaultValue = null)
+    {
+        return parent::$app->request->get($name, $defaultValue);
+    }
+
+    public static function post($name = null, $defaultValue = null)
+    {
+        return parent::$app->request->post($name, $defaultValue);
     }
 }

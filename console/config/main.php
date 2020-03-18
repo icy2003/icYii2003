@@ -13,13 +13,12 @@ return [
     'controllerNamespace' => 'console\controllers',
     'aliases' => [
         '@bower' => '@vendor/yidas/yii2-bower-asset/bower',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'controllerMap' => [
         'fixture' => [
-            'class' => 'yii\console\controllers\FixtureController',
-            'namespace' => 'common\fixtures',
-          ],
+            'class' => 'yii\faker\FixtureController',
+        ],
     ],
     'components' => [
         'log' => [
