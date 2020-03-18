@@ -26,6 +26,26 @@ class ManageController extends BaseController
         ]);
     }
 
+    public function actionView()
+    {
+        $this->layout = '@backend/views/layouts/content.php';
+        $id = Y::get('id');
+        $model = MemberModel::findOne($id);
+        return $this->render('view', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionSave()
+    {
+        $this->layout = '@backend/views/layouts/content.php';
+        $id = Y::get('id');
+        $model = MemberModel::findOne($id);
+        return $this->render('save', [
+            'model' => $model,
+        ]);
+    }
+
     public function actionDelete()
     {
         return $this->asJson([
