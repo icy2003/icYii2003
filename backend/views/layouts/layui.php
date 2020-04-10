@@ -7,7 +7,6 @@ use backend\assets\AppAsset;
 use backend\assets\LayuiAsset;
 use common\utils\Y;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 LayuiAsset::register($this);
@@ -40,45 +39,55 @@ LayuiAsset::register($this);
                 <li class="layui-nav-item"><a href="<?php echo Y::to(['site/logout']) ?>">退出</a></li>
             </ul>
         </div>
-        <?php
-
-$menus = [
-    ['label' => '用户管理', 'active' => false, 'children' => [
-        ['label' => '用户列表', 'route' => ['member/manage/index'], 'active' => false],
-    ],
-    ],
-    ['label' => '食堂管理', 'active' => false, 'children' => [
-        ['label' => '菜品管理', 'route' => ['canteen/food/index'], 'active' => false],
-    ],
-    ],
-];
-
-?>
 
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <?php foreach ($menus as $items): ?>
-                    <li class="layui-nav-item <?php if (true === $items['active']): ?>layui-nav-itemed<?php endif;?>">
-                        <a class="" href="javascript:;"><?php echo $items['label'] ?></a>
-                        <?php foreach ($items['children'] as $item): ?>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">所有商品</a>
                         <dl class="layui-nav-child">
-                            <dd class="<?php if (true === $item['active']): ?>layui-this<?php endif;?>">
-                                <a href="<?php echo Y::to($item['route']) ?>"><?php echo $item['label']; ?></a>
-                            </dd>
+                            <dd><a class="site-demo-active" data-url='#' data-id="1" data-name="111">列表一</a></dd>
+                            <dd><a class="site-demo-active" data-url='#' data-id="2" data-name="112">列表2</a></dd>
                         </dl>
-                        <?php endforeach;?>
                     </li>
-                    <?php endforeach;?>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">解决方案</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">云市场</a></li>
+                    <li class="layui-nav-item"><a href="">发布商品</a></li>
                 </ul>
             </div>
+
+
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
         <div class="layui-body">
             <!-- 内容主体区域 -->
-            <div style="padding: 15px;">
-                <?php echo $content ?>
+            <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true"
+                style="height: calc(100% - 20px);margin: 10px 12px;">
+                <ul class="layui-tab-title">
+                </ul>
+                <div class="layui-tab-content" style="height: calc(100% - 40px);">
+                asdadasd
+                </div>
             </div>
         </div>
 
@@ -89,9 +98,47 @@ $menus = [
         </div>
     </div>
     <script>
-    //JavaScript代码区域
     layui.use('element', function() {
-        var element = layui.element;
+        var $ = layui.jquery,
+            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+            tabAdd: function(url, id, name) {
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: name,
+                    content: '<iframe data-frameid="' + id +
+                        '" scrolling="auto" frameborder="0" src="' + url +
+                        '" style="width:100%;height:100%"></iframe>',
+                    id: id
+                })
+            },
+            tabDelete: function(othis) {
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+
+
+                othis.addClass('layui-btn-disabled');
+            },
+            tabChange: function(id) {
+                //切换到指定Tab项
+                element.tabChange('demo', id); //切换到：用户管理
+            }
+        };
+
+        $('.site-demo-active').on('click', function() {
+            active.tabAdd($(this).data('url'), $(this).data('id'), $(this).data('name'));
+            active.tabChange($(this).data('id'));
+        });
+
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#demo=/, '');
+        element.tabChange('demo', layid);
+
+        element.on('tab(demo)', function(elem) {
+            location.hash = 'demo=' + $(this).attr('lay-id');
+        });
 
     });
     </script>

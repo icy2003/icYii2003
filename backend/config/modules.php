@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'member' => [
-        'class' => 'backend\modules\member\Bootstrap',
+    'index' => [
+        'class' => 'backend\modules\index\Bootstrap',
     ],
 ];
