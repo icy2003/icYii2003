@@ -43,7 +43,7 @@ LayuiAsset::register($this);
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <ul class="layui-nav layui-nav-tree" lay-filter="menulists">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">所有商品</a>
                         <dl class="layui-nav-child">
@@ -86,7 +86,6 @@ LayuiAsset::register($this);
                 <ul class="layui-tab-title">
                 </ul>
                 <div class="layui-tab-content" style="height: calc(100% - 40px);">
-                asdadasd
                 </div>
             </div>
         </div>
@@ -127,17 +126,22 @@ LayuiAsset::register($this);
             }
         };
 
-        $('.site-demo-active').on('click', function() {
-            active.tabAdd($(this).data('url'), $(this).data('id'), $(this).data('name'));
-            active.tabChange($(this).data('id'));
-        });
-
         //Hash地址的定位
         var layid = location.hash.replace(/^#demo=/, '');
         element.tabChange('demo', layid);
 
         element.on('tab(demo)', function(elem) {
             location.hash = 'demo=' + $(this).attr('lay-id');
+        });
+
+        element.on('nav(menulists)', function(elem) {
+            var layid = elem.attr('data-id');
+            var url = elem.attr('data-url');
+            var name = elem.attr('data-name');
+            if ($("li[lay-id='" + layid + "']").length == 0) {
+                active.tabAdd(url, layid, name);
+            }
+            active.tabChange(layid);
         });
 
     });
