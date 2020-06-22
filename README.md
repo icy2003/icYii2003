@@ -1,8 +1,10 @@
 # icyii2003
 
-这是我基于 Yii2 的高级模板的个人项目。
+这是我基于 Yii2 的高级模板的个人项目，我会不定时丢一些半成品代码上去（无法运行概不负责）
 
-第一个[正式包](https://github.com/icy2003/icyii2003/releases/tag/v0.0)是 Yii2 的高级模板，修复了 composer 更新依赖时的问题（问题列表在结尾），原版后续教程点[这里](https://www.yiiframework.com/extension/yiisoft/yii2-app-advanced/doc/guide/2.0/en/start-installation#preparing-application)。
+想要纯净的 Yii2 高级模板的同学请直接下载第一个[正式包](https://github.com/icy2003/icyii2003/releases/tag/v0.0)，它修复了 composer 更新依赖时的问题（问题列表在结尾）
+
+原版后续教程点[这里](https://www.yiiframework.com/extension/yiisoft/yii2-app-advanced/doc/guide/2.0/en/start-installation#preparing-application)
 
 ## 安装
 
